@@ -1,5 +1,7 @@
 package com.boushtech.quickorder.entities;
 
+import java.sql.Timestamp;
+
 public class Orden {
 
     private String id;

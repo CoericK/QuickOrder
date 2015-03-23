@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.boushtech.quickorder" >
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -21,6 +22,10 @@
         <activity
             android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".activities.DetalleOrdenActivity"
+            android:label="@string/title_activity_detalle_orden" >
         </activity>
     </application>
 

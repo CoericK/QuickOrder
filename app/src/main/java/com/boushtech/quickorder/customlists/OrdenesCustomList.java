@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.boushtech.quickorder.R;
 import com.boushtech.quickorder.entities.Orden;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class OrdenesCustomList extends BaseAdapter {
@@ -74,7 +77,15 @@ public class OrdenesCustomList extends BaseAdapter {
         Orden o = ordenes.get(position);
 
         codigo.setText(o.getCodigo());
-        fecha.setText(o.getFechaRegistro());
+        Long l = Long.parseLong(o.getFechaRegistro());
+
+
+        Date d = new Date(l);
+
+        String newstring = new SimpleDateFormat("dd/MM/yyyy HH:mm a").format(d);
+
+
+        fecha.setText(newstring);
 
 
         if(o.getTipoConsumo().equalsIgnoreCase("A")){

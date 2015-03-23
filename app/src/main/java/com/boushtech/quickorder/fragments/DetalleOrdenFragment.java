@@ -1,20 +1,18 @@
 package com.boushtech.quickorder.fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.boushtech.quickorder.Config;
 import com.boushtech.quickorder.R;
-import com.boushtech.quickorder.activities.DetalleOrdenActivity;
+import com.boushtech.quickorder.customlists.DetalleOrdenCustomList;
 import com.boushtech.quickorder.customlists.OrdenesCustomList;
+import com.boushtech.quickorder.entities.DetalleOrden;
 import com.boushtech.quickorder.entities.Orden;
 import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
 import com.google.gson.Gson;
@@ -28,23 +26,29 @@ import com.quentindommerc.superlistview.SuperListview;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrdenesFragment extends Fragment {
+public class DetalleOrdenFragment extends Fragment {
 
-    private SuperListview lvOrdenes;
+    private SuperListview lvDetalle;
 
     private String auth_token2;
+    private String codigo;
 
-    protected OrdenesCustomList adapter;
+    protected DetalleOrdenCustomList adapter;
 
     private ProgressBarCircularIndeterminate pbLoading;
 
+    private TextView codigoOrden;
+    private TextView totalOrden;
 
-    List<Orden> ordenes = new ArrayList<Orden>();
+
+    List<DetalleOrden> detalle = new ArrayList<DetalleOrden>();
 
     private Gson gson;
 
+    private Double total = 0.0;
 
-    public OrdenesFragment() {
+
+    public DetalleOrdenFragment() {
     }
 
 
@@ -56,6 +60,7 @@ public class OrdenesFragment extends Fragment {
 
         Bundle args = getArguments();
         if (args != null) {
+            codigo = args.getString("codigo");
             auth_token2 = args.getString("auth_token2");
         }
 
@@ -64,10 +69,13 @@ public class OrdenesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_ordenes, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_detalle_orden, container, false);
 
 
-        lvOrdenes = (SuperListview) rootView.findViewById(R.id.lvOrdenes);
+        codigoOrden = (TextView) rootView.findViewById(R.id.codigoOrden);
+        totalOrden = (TextView) rootView.findViewById(R.id.totalOrden);
+
+        lvDetalle = (SuperListview) rootView.findViewById(R.id.lvDetalle);
         pbLoading = (ProgressBarCircularIndeterminate) rootView.findViewById(R.id.pbLoading);
 
 
@@ -79,82 +87,67 @@ public class OrdenesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        adapter = new OrdenesCustomList(getActivity(), ordenes);
+        adapter = new DetalleOrdenCustomList(getActivity(), detalle);
 
 
-        lvOrdenes.setAdapter(adapter);
-
-
-
-        getOrdenes(auth_token2);
-
-        lvOrdenes.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getOrdenes(auth_token2);
-            }
-        });
+        lvDetalle.setAdapter(adapter);
 
 
 
-        lvOrdenes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String codigo = ((TextView) view.findViewById(R.id.codigo)).getText().toString();
 
-                Intent i = new Intent(getActivity(), DetalleOrdenActivity.class);
-                i.putExtra("codigo", codigo);
-                i.putExtra("auth_token2", auth_token2);
-                startActivity(i);
-            }
-        });
+        getDetalle(codigo, auth_token2);
 
 
     }
 
     public void loading(){
         pbLoading.setVisibility(View.VISIBLE);
-        lvOrdenes.setVisibility(View.GONE);
+        lvDetalle.setVisibility(View.GONE);
     }
 
     public void loaded(){
         pbLoading.setVisibility(View.GONE);
-        lvOrdenes.setVisibility(View.VISIBLE);
+        lvDetalle.setVisibility(View.VISIBLE);
     }
 
-    public void getOrdenes(String at2) {
+    public void getDetalle(String cod, String at2) {
 
         loading();
+
+        total = 0.0;
+        codigoOrden.setText(cod);
         Ion.with(getActivity())
-                .load(Config.HOST_URI + "/restaurante/ordenes?auth_token=" + at2)
+                .load(Config.HOST_URI + "/restaurante/ordenes/filtro?codigo="+cod+"&auth_token=" + at2)
                 .asJsonObject()
                 .setCallback(new FutureCallback<JsonObject>() {
                     @Override
                     public void onCompleted(Exception e, JsonObject result) {
                         // do stuff with the result or error
-                        JsonArray data = result.getAsJsonArray("data");
+                        JsonArray detalleArray = result.getAsJsonArray("detalle");
 
 
-                        if (data != null) {
-
-                            ordenes.clear();
-                            for (int i = 0; i < data.size(); i++) {
-                                JsonElement ordenTMP = data.get(i);
+                        if (detalleArray != null) {
+                            detalle.clear();
 
 
-                                Orden o = gson.fromJson(ordenTMP.toString(), Orden.class);
+                            for (int i = 0; i < detalleArray.size(); i++) {
+                                JsonElement ordenTMP = detalleArray.get(i);
 
-                                ordenes.add(o);
+
+                                DetalleOrden o = gson.fromJson(ordenTMP.toString(), DetalleOrden.class);
+                                total = total + Double.parseDouble(o.getTotal());
+                                detalle.add(o);
 
 
                             }
+
+                            totalOrden.setText(total.toString());
 
                             adapter.notifyDataSetChanged();
 
 
                         }
                         loaded();
-
 
 
                     }

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+            android:padding="2dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dip"
+                >
+
+
+            <RelativeLayout
+                    android:id="@+id/rll"
+                    android:paddingRight="5dip"
+                    android:paddingLeft="5dip"
+                    android:layout_marginTop="10dip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                <RelativeLayout
+
+                        android:layout_marginTop="4dip"
+                        android:paddingLeft="8dip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:id="@+id/lblCodigo"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:text="CÓDIGO:"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                    <TextView
+                            android:id="@+id/codigo"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/lblCodigo"
+                            android:paddingLeft="8dip"
+                            android:textSize="12sp"
+                            android:text="--"
+                            />
+                    <View
+                            android:id="@+id/separadorCodigo"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:visibility="visible"
+                            android:background="#CC30b2e9"
+                            android:layout_below="@id/codigo"
+                            android:layout_marginTop="4dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+
+
+                    <TextView
+                            android:id="@+id/lblProducto"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorCodigo"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:text="PRODUCTO: "
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                    <TextView
+                            android:id="@+id/producto"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorCodigo"
+                            android:layout_toRightOf="@id/lblProducto"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dip"
+                            android:textSize="12sp"
+                            android:text="--"
+                            />
+                    <View
+                            android:id="@+id/separadorProducto"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:visibility="visible"
+                            android:background="#CC30b2e9"
+                            android:layout_below="@id/producto"
+                            android:layout_marginTop="4dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+
+                    <TextView
+                            android:id="@+id/lblPrecioUnitario"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorProducto"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:text="PRECIO UNIT.: "
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                    <TextView
+                            android:id="@+id/precio_unitario"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorProducto"
+                            android:layout_toRightOf="@id/lblPrecioUnitario"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dip"
+                            android:textSize="12sp"
+                            android:text="--"
+                            />
+                    <View
+                            android:id="@+id/separadorPrecioUnitario"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:visibility="visible"
+                            android:background="#CC30b2e9"
+                            android:layout_below="@id/precio_unitario"
+                            android:layout_marginTop="4dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+
+                    <TextView
+                            android:id="@+id/lblCantidad"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorPrecioUnitario"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:text="CANTIDAD: "
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                    <TextView
+                            android:id="@+id/cantidad"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorPrecioUnitario"
+                            android:layout_toRightOf="@id/lblCantidad"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dip"
+                            android:textSize="12sp"
+                            android:text="--"
+                            />
+                    <View
+                            android:id="@+id/separadorCantidad"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:visibility="visible"
+                            android:background="#CC30b2e9"
+                            android:layout_below="@id/cantidad"
+                            android:layout_marginTop="4dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+                    <TextView
+                            android:id="@+id/lblSubTotal"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorCantidad"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:text="SUB. TOTAL: "
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                    <TextView
+                            android:id="@+id/sub_total"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorCantidad"
+                            android:layout_toRightOf="@id/lblSubTotal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dip"
+                            android:textSize="12sp"
+                            android:text="--"
+                            />
+                    <View
+                            android:id="@+id/separadorSubTotal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:visibility="visible"
+                            android:background="#CC30b2e9"
+                            android:layout_below="@id/sub_total"
+                            android:layout_marginTop="4dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+
+
+
+
+
+
+                </RelativeLayout>
+
+
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>
