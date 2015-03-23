@@ -7,10 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.boushtech.quickorder.R;
+import com.boushtech.quickorder.libraries.SessionManagement;
 
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
+    private SessionManagement oSM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +22,12 @@ public class MainActivity extends ActionBarActivity {
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
+        oSM = new SessionManagement(getApplicationContext());
+
+
         Intent i;
-        Boolean logged = false;
-        if(!logged){
+
+        if(!oSM.isLoggedIn()){
             i = new Intent(this, LoginActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

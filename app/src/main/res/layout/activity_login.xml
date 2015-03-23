@@ -1,5 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
+                xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+                xmlns:ripple="http://schemas.android.com/apk/res-auto"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:id="@+id/rlLoginActivity"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -7,6 +12,7 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:background="#29B6F6"
+                xmlns:bootstrap="http://schemas.android.com/apk/res-auto"
                 tools:context="com.boushtech.quickorder.activities.LoginActivity">
 
     <LinearLayout
@@ -14,6 +20,7 @@
         android:layout_centerVertical="true"
         android:orientation="vertical"
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content">
 
         <ImageView
@@ -26,7 +33,7 @@
         <EditText
                 android:id="@+id/usuario"
                 android:background="@drawable/edittext_radius"
-                android:text=""
+                android:text="ryam4u"
                 android:textColor="#464646"
                 android:textColorHint="#464646"
                 android:hint="USUARIO"
@@ -43,12 +50,12 @@
                 />
 
         <EditText
-                android:id="@+id/contra"
+                android:id="@+id/password"
                 android:layout_width="fill_parent"
                 android:layout_height="32dip"
                 android:textColor="#464646"
                 android:textColorHint="#464646"
-                android:text=""
+                android:text="05045256500430"
                 android:singleLine="true"
                 android:hint="CONTRASEÑA"
                 android:textSize="14sp"
@@ -61,6 +68,67 @@
                 android:layout_marginTop="15dip"
                 android:password="true"
                 />
+
+        <TextView
+                android:layout_marginTop="16dip"
+                android:gravity="center_horizontal"
+                android:id="@+id/statusMsg"
+                android:visibility="gone"
+                android:text=""
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+
+        <RelativeLayout
+                android:id="@+id/loading"
+                android:visibility="gone"
+                android:layout_marginTop="16dip"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/txtValidandoDatos"
+                    android:text="Validando datos, por favor espere..."
+                    android:textColor="#fff"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                />
+
+            <com.gc.materialdesign.views.ProgressBarCircularIndeterminate
+                    android:id="@+id/progressBarCircularIndeterminate"
+                    android:layout_toRightOf="@id/txtValidandoDatos"
+                    android:layout_width="32dp"
+                    android:layout_marginLeft="16dip"
+                    android:layout_height="32dp"
+                    android:background="#1E88E5" />
+
+        </RelativeLayout>
+        <com.andexert.library.RippleView
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="48dip"
+                android:layout_marginTop="16dip"
+                ripple:rv_color="#0288D1"
+                ripple:rv_rippleDuration="200"
+                >
+
+            <com.beardedhen.androidbootstrap.BootstrapButton
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="48dip"
+                android:text="INICIAR SESIÓN"
+                bootstrap:bb_type="default"
+            />
+        </com.andexert.library.RippleView>
+
+
 
     </LinearLayout>
 
