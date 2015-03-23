@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.andexert.library.RippleView;
+import com.boushtech.quickorder.Config;
 import com.boushtech.quickorder.R;
 import com.boushtech.quickorder.libraries.SessionManagement;
 import com.google.gson.JsonObject;
@@ -68,89 +69,75 @@ public class LoginActivity extends ActionBarActivity {
 
 
                 Ion.with(getApplicationContext())
-                        .load("http://54.186.141.203:8080/sysempresa/api/auth/get_token")
-                        .setBodyParameter("usuario", u)
-                        .setBodyParameter("password", p)
-                        .asJsonObject()
-                        .setCallback(new FutureCallback<JsonObject>() {
-                            @Override
-                            public void onCompleted(Exception e, JsonObject result) {
-                                // do stuff with the result or error
-                                String message = "";
-                                JsonObject auth_token = result.getAsJsonObject("auth_token");
-                                if(auth_token != null){
-                                    //Log.d("LoginActivity Token", "Token: "+ auth_token.toString());
-                                    message = "Datos correctos, iniciando sesión...";
+                        .load(Config.HOST_URI+"/auth/get_token")
+                                .setBodyParameter("usuario", u)
+                                .setBodyParameter("password", p)
+                                .asJsonObject()
+                                .setCallback(new FutureCallback<JsonObject>() {
+                                    @Override
+                                    public void onCompleted(Exception e, JsonObject result) {
+                                        // do stuff with the result or error
+                                        String message = "";
+                                        JsonObject auth_token = result.getAsJsonObject("auth_token");
+                                        if (auth_token != null) {
+                                            //Log.d("LoginActivity Token", "Token: "+ auth_token.toString());
+                                            message = "Datos correctos, iniciando sesión...";
 
-                                    String token = cleanString(auth_token.get("token").toString());
-                                    JsonObject persona = result.getAsJsonObject("persona");
+                                            String token = cleanString(auth_token.get("token").toString());
+                                            JsonObject persona = result.getAsJsonObject("persona");
 
-                                    String nombres = cleanString(persona.get("nombres").toString());
-                                    String apaterno = cleanString(persona.get("apPaterno").toString());
-                                    String amaterno = cleanString(persona.get("apMaterno").toString());
-                                    String nombre_completo = cleanString(persona.get("nombreCompleto").toString());
-                                    String sexo = cleanString(persona.get("sexo").toString());
-                                    String imagen = cleanString(persona.get("imagenUri").toString());
+                                            String nombres = cleanString(persona.get("nombres").toString());
+                                            String apaterno = cleanString(persona.get("apPaterno").toString());
+                                            String amaterno = cleanString(persona.get("apMaterno").toString());
+                                            String nombre_completo = cleanString(persona.get("nombreCompleto").toString());
+                                            String sexo = cleanString(persona.get("sexo").toString());
+                                            String imagen = cleanString(persona.get("imagenUri").toString());
 
-                                    oSM.createLoginSession(token, nombres, apaterno, amaterno, nombre_completo, sexo, imagen);
-
-
-                                    //Toast.makeText(getApplicationContext(), "Token: "+token,Toast.LENGTH_SHORT).show();
-                                    statusMsg.setText(message);
+                                            oSM.createLoginSession(token, nombres, apaterno, amaterno, nombre_completo, sexo, imagen);
 
 
-                                    Ion.with(getApplicationContext())
-                                            .load("http://54.186.141.203:8080/sysempresa/api/auth/get_token2?empresa_id=1&auth_token=" + token)
-                                            .asJsonObject()
-                                            .setCallback(new FutureCallback<JsonObject>() {
-                                                @Override
-                                                public void onCompleted(Exception e, JsonObject result2) {
-                                                    // do stuff with the result or error
-
-                                                    JsonObject auth_token2 = result2.getAsJsonObject("auth_token");
-
-                                                    if(auth_token2 != null){
-
-                                                        String token2 = cleanString(auth_token2.get("token").toString());
+                                            //Toast.makeText(getApplicationContext(), "Token: "+token,Toast.LENGTH_SHORT).show();
+                                            statusMsg.setText(message);
 
 
-                                                        oSM.setAuth_Token2(token2);
+                                            Ion.with(getApplicationContext())
+                                                    .load(Config.HOST_URI+"/auth/get_token2?empresa_id=1&auth_token=" + token)
+                                                    .asJsonObject()
+                                                    .setCallback(new FutureCallback<JsonObject>() {
+                                                        @Override
+                                                        public void onCompleted(Exception e, JsonObject result2) {
+                                                            // do stuff with the result or error
 
-                                                        //Toast.makeText(getApplicationContext(), "Token 2: "+token2,Toast.LENGTH_SHORT).show();
+                                                            JsonObject auth_token2 = result2.getAsJsonObject("auth_token");
 
-                                                        loadedOk();
-                                                    }
+                                                            if (auth_token2 != null) {
 
-
-                                                }
-                                            });
-
-
-
-
-
+                                                                String token2 = cleanString(auth_token2.get("token").toString());
 
 
+                                                                oSM.setAuth_Token2(token2);
+
+                                                                //Toast.makeText(getApplicationContext(), "Token 2: "+token2,Toast.LENGTH_SHORT).show();
+
+                                                                loadedOk();
+                                                            }
 
 
-
-                                }else {
-                                    message = cleanString(result.get("message").toString());
-
-
-                                    statusMsg.setText(message);
-                                    loaded();
-                                }
+                                                        }
+                                                    });
 
 
+                                        } else {
+                                            message = cleanString(result.get("message").toString());
 
 
+                                            statusMsg.setText(message);
+                                            loaded();
+                                        }
 
 
-
-
-                            }
-                        });
+                                    }
+                                });
 
 
             }

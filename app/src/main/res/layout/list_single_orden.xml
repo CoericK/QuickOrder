@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+            android:padding="2dip"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dip"
+                >
+
+
+            <RelativeLayout
+                    android:id="@+id/rll"
+                    android:paddingRight="5dip"
+                    android:paddingLeft="5dip"
+                    android:layout_marginTop="10dip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                <RelativeLayout
+
+                        android:layout_marginTop="4dip"
+                        android:paddingLeft="8dip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:id="@+id/lblCodigo"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:text="CÓDIGO:"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                    <TextView
+                            android:id="@+id/codigo"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/lblCodigo"
+                            android:paddingLeft="8dip"
+                            android:textSize="12sp"
+                            android:text="--"
+                            />
+                    <View
+                            android:id="@+id/separadorCodigo"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:visibility="visible"
+                            android:background="#CC30b2e9"
+                            android:layout_below="@id/codigo"
+                            android:layout_marginTop="4dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+
+
+                    <TextView
+                            android:id="@+id/lblFecha"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorCodigo"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:text="FECHA: "
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                    <TextView
+                            android:id="@+id/fecha"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorCodigo"
+                            android:layout_toRightOf="@id/lblFecha"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dip"
+                            android:textSize="12sp"
+                            android:text="--"
+                            />
+                    <View
+                            android:id="@+id/separadorFecha"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:visibility="visible"
+                            android:background="#CC30b2e9"
+                            android:layout_below="@id/fecha"
+                            android:layout_marginTop="4dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+
+                    <TextView
+                            android:id="@+id/lblTipoConsumo"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorFecha"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:text="T. CONSUM.: "
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                    <TextView
+                            android:id="@+id/tipo_consumo"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorFecha"
+                            android:layout_toRightOf="@id/lblTipoConsumo"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dip"
+                            android:textSize="12sp"
+                            android:text="--"
+                            />
+                    <View
+                            android:id="@+id/separadorTipoConsumo"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:visibility="visible"
+                            android:background="#CC30b2e9"
+                            android:layout_below="@id/tipo_consumo"
+                            android:layout_marginTop="4dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+                    <TextView
+                            android:id="@+id/lblEstado"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorTipoConsumo"
+                            android:layout_width="90dip"
+                            android:layout_height="wrap_content"
+                            android:text="ESTADO: "
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            />
+                    <TextView
+                            android:id="@+id/estado"
+                            android:layout_marginTop="8dip"
+                            android:layout_below="@id/separadorTipoConsumo"
+                            android:layout_toRightOf="@id/lblEstado"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="8dip"
+                            android:textSize="12sp"
+                            android:text="--"
+                            />
+                    <View
+                            android:id="@+id/separadorEstado"
+                            android:layout_width="fill_parent"
+                            android:layout_height="1dip"
+                            android:visibility="visible"
+                            android:background="#CC30b2e9"
+                            android:layout_below="@id/estado"
+                            android:layout_marginTop="4dip"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+
+
+
+
+
+
+                </RelativeLayout>
+
+
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

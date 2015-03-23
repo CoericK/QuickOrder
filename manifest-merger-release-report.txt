@@ -28,6 +28,8 @@ MERGED from com.android.support:support-v4:22.0.0:22:5
 MERGED from com.beardedhen:androidbootstrap:1.2.1:11:5
 MERGED from com.github.traex.rippleeffect:library:1.2.3:12:5
 MERGED from com.github.navasmdc:MaterialDesign:1.4:11:5
+MERGED from com.quentindommerc.superlistview:library:1.5.2:4:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
 	android:label
 		ADDED from AndroidManifest.xml:10:9
 	android:allowBackup
@@ -65,6 +67,8 @@ MERGED from com.android.support:support-v4:22.0.0:20:5
 MERGED from com.beardedhen:androidbootstrap:1.2.1:7:5
 MERGED from com.github.traex.rippleeffect:library:1.2.3:8:5
 MERGED from com.github.navasmdc:MaterialDesign:1.4:7:5
+MERGED from com.quentindommerc.superlistview:library:1.5.2:2:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
 	android:targetSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0

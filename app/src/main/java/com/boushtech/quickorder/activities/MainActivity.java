@@ -1,18 +1,25 @@
 package com.boushtech.quickorder.activities;
 
 import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import com.boushtech.quickorder.R;
+import com.boushtech.quickorder.fragments.OrdenesFragment;
 import com.boushtech.quickorder.libraries.SessionManagement;
 
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
     private SessionManagement oSM;
+
+    private FrameLayout flLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +42,26 @@ public class MainActivity extends ActionBarActivity {
             finish();
         }
 
+        flLoader = (FrameLayout) findViewById(R.id.flLoader);
 
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        transaction.replace(R.id.flLoader, getOrdenesFragment(oSM.getKeyAuthToken2()));
+        transaction.addToBackStack(null);
+        transaction.commit();
+
+    }
 
 
+    public Fragment getOrdenesFragment(String at2){
+
+        OrdenesFragment f = new OrdenesFragment();
+        Bundle args = new Bundle();
+        args.putString("auth_token2", at2);
+        f.setArguments(args);
+        return f;
 
 
 
