@@ -1,6 +1,5 @@
 package com.boushtech.quickorder.activities;
 
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,38 +10,35 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import com.boushtech.quickorder.R;
-import com.boushtech.quickorder.events.NuevaOrden;
+import com.boushtech.quickorder.fragments.DetalleOrdenFragment;
 import com.boushtech.quickorder.fragments.OrdenesFragment;
+import com.boushtech.quickorder.fragments.ProductosFragment;
 import com.boushtech.quickorder.libraries.SessionManagement;
-import de.greenrobot.event.EventBus;
 
-public class MainActivity extends ActionBarActivity {
+public class ProductosActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
-    private SessionManagement oSM;
-
     private FrameLayout flLoader;
+
+
+    private String auth_token2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_productos);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        oSM = new SessionManagement(getApplicationContext());
 
+        Bundle extras = getIntent().getExtras();
 
-        Intent i;
+        if (extras != null) {
+            auth_token2 = extras.getString("auth_token2");
 
-        if(!oSM.isLoggedIn()){
-            i = new Intent(this, LoginActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
-            finish();
         }
+
 
         flLoader = (FrameLayout) findViewById(R.id.flLoader);
 
@@ -50,18 +46,23 @@ public class MainActivity extends ActionBarActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        transaction.replace(R.id.flLoader, getOrdenesFragment(oSM.getKeyAuthToken2()));
+        transaction.replace(R.id.flLoader, getProductosFragment(auth_token2));
+
         transaction.commit();
+
+
+
+
+
 
 
 
     }
 
 
+    public Fragment getProductosFragment(String at2){
 
-    public Fragment getOrdenesFragment(String at2){
-
-        OrdenesFragment f = new OrdenesFragment();
+        ProductosFragment f = new ProductosFragment();
         Bundle args = new Bundle();
         args.putString("auth_token2", at2);
         f.setArguments(args);
@@ -75,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_productos, menu);
         return true;
     }
 
@@ -87,14 +88,7 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.crear_orden) {
-            Intent i = new Intent(this, CrearOrdenActivity.class);
-            startActivity(i);
-            return true;
-        }
-
-        if (id == R.id.logout) {
-            oSM.logoutUser();
+        if (id == R.id.action_settings) {
             return true;
         }
 

@@ -45,4 +45,9 @@ dependencies {
     compile 'com.github.navasmdc:MaterialDesign:1.+@aar'
     compile 'com.quentindommerc.superlistview:library:1.5.2'
     compile 'com.google.code.gson:gson:2.3'
+    compile 'de.greenrobot:eventbus:2.4.0'
+
+    compile 'com.afollestad:material-dialogs:0.6.4.7'
+    compile 'cn.pedant.sweetalert:library:1.3'
 }
+

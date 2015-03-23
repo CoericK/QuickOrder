@@ -30,6 +30,15 @@ MERGED from com.github.traex.rippleeffect:library:1.2.3:12:5
 MERGED from com.github.navasmdc:MaterialDesign:1.4:11:5
 MERGED from com.quentindommerc.superlistview:library:1.5.2:4:5
 MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.afollestad:material-dialogs:0.6.4.7:12:5
+MERGED from com.android.support:appcompat-v7:22.0.0:22:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.android.support:recyclerview-v7:22.0.0:22:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from cn.pedant.sweetalert:library:1.3:11:5
+MERGED from com.pnikosis:materialish-progress:1.0:11:5
+MERGED from com.android.support:appcompat-v7:22.0.0:22:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
 	android:label
 		ADDED from AndroidManifest.xml:11:9
 	android:allowBackup
@@ -66,6 +75,18 @@ ADDED from AndroidManifest.xml:26:9
 		ADDED from AndroidManifest.xml:28:13
 	android:name
 		ADDED from AndroidManifest.xml:27:13
+activity#com.boushtech.quickorder.activities.ProductosActivity
+ADDED from AndroidManifest.xml:30:9
+	android:label
+		ADDED from AndroidManifest.xml:32:13
+	android:name
+		ADDED from AndroidManifest.xml:31:13
+activity#com.boushtech.quickorder.activities.CrearOrdenActivity
+ADDED from AndroidManifest.xml:34:9
+	android:label
+		ADDED from AndroidManifest.xml:36:13
+	android:name
+		ADDED from AndroidManifest.xml:35:13
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.android.support:appcompat-v7:22.0.0:20:5
@@ -75,9 +96,24 @@ MERGED from com.github.traex.rippleeffect:library:1.2.3:8:5
 MERGED from com.github.navasmdc:MaterialDesign:1.4:7:5
 MERGED from com.quentindommerc.superlistview:library:1.5.2:2:5
 MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.afollestad:material-dialogs:0.6.4.7:8:5
+MERGED from com.android.support:appcompat-v7:22.0.0:20:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.android.support:recyclerview-v7:22.0.0:20:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from cn.pedant.sweetalert:library:1.3:7:5
+MERGED from com.pnikosis:materialish-progress:1.0:7:5
+MERGED from com.android.support:appcompat-v7:22.0.0:20:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
 	android:targetSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
 	android:minSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
+activity#android.support.v7.widget.TestActivity
+ADDED from com.android.support:recyclerview-v7:22.0.0:23:9
+	android:label
+		ADDED from com.android.support:recyclerview-v7:22.0.0:25:13
+	android:name
+		ADDED from com.android.support:recyclerview-v7:22.0.0:24:13

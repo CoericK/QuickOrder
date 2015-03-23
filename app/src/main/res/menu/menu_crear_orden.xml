@@ -1,14 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="com.boushtech.quickorder.activities.MainActivity">
-    <item android:id="@+id/crear_orden"
-          android:title="Crear Orden"
+      tools:context="com.boushtech.quickorder.activities.CrearOrdenActivity">
+    <item android:id="@+id/add_products"
+          android:title="Agregar Productos"
           android:orderInCategory="10"
           app:showAsAction="ifRoom"/>
-
-    <item android:id="@+id/logout"
-          android:title="Salir"
+    <item android:id="@+id/send_order"
+          android:title="Enviar Orden"
           android:orderInCategory="100"
           app:showAsAction="ifRoom"/>
 </menu>

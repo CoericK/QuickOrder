@@ -16,6 +16,7 @@ import com.boushtech.quickorder.R;
 import com.boushtech.quickorder.activities.DetalleOrdenActivity;
 import com.boushtech.quickorder.customlists.OrdenesCustomList;
 import com.boushtech.quickorder.entities.Orden;
+import com.boushtech.quickorder.events.NuevaOrden;
 import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -24,6 +25,7 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.quentindommerc.superlistview.SuperListview;
+import de.greenrobot.event.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +60,20 @@ public class OrdenesFragment extends Fragment {
         if (args != null) {
             auth_token2 = args.getString("auth_token2");
         }
+
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    public void onEvent(NuevaOrden no){
+
+        getOrdenes(auth_token2);
+
 
 
     }

@@ -27,6 +27,14 @@
             android:name=".activities.DetalleOrdenActivity"
             android:label="@string/title_activity_detalle_orden" >
         </activity>
+        <activity
+            android:name=".activities.ProductosActivity"
+            android:label="@string/title_activity_productos" >
+        </activity>
+        <activity
+            android:name=".activities.CrearOrdenActivity"
+            android:label="@string/title_activity_crear_orden" >
+        </activity>
     </application>
 
 </manifest>
